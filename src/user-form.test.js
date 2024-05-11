@@ -1,0 +1,12 @@
+import { render, screen } from "@testing-library/react";
+import UserForm from "./user-form";
+
+test("it shows two inputs and a button", () => {
+  render(<UserForm />);
+
+  const inputs = screen.getAllByRole("textbox");
+  const button = screen.getByRole("button");
+
+  expect(inputs).toHaveLength(2);
+  expect(button).toBeInTheDocument();
+});

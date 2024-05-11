@@ -13,11 +13,19 @@ export default function UserForm({ onUserAdd }) {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div>
         <label>Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <button>Add user</button>
     </form>

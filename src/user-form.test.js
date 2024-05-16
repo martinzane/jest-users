@@ -31,3 +31,21 @@ test("it calls onUserAdd when the form is submitted", () => {
   expect(mock).toHaveBeenCalled();
   expect(mock).toHaveBeenCalledWith({ name: "jane", email: "jane@jane.com" });
 });
+
+test("it empties the two inputs when the form is submitted", async () => {
+  const mock = jest.fn();
+  render(<UserForm onUserAdd={mock} />);
+
+  const nameInput = screen.getByRole("textbox", { name: /name/i });
+  const emailInput = screen.getByRole("textbox", { name: /email/i });
+  const button = screen.getByRole("button");
+
+  await userEvent.click(nameInput);
+  await userEvent.keyboard("jane");
+  await userEvent.click(emailInput);
+  await userEvent.keyboard("jane@jane.com");
+  await userEvent.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});
